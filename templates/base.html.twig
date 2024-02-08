@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+        {% block stylesheets %}
+        <link href="/css/network.css" rel="stylesheet">
+        {% endblock %}
+
+        {% block javascripts %}
+{% block importmap %}{{ importmap('app') }}{% endblock %}
+        {% endblock %}
+    </head>
+    <body>
+        {% block body %}
+        <head>
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+</head>
+
+<body>
+
+<img src="/img/LSV.png" width="15%"></img><br><br>
+  <h1>LSV Rôleplay FiveM</h1>
+  <div class ="frame">
+    <a href="https://www.youtube.com/@lsv.roleplay" target="_blank" class="btn">
+    <img src="/img/youtube.png" width='50%'></img>
+</a>
+    <a href="https://www.instagram.com/lsv_roleplay_fivem/" class="btn">
+    <img src="/img/instagram.png" width='50%'></img>
+</a>
+    <a href="https://www.tiktok.com/@lsv.roleplay.fivem" class="btn">
+    <img src="/img/tic-tac.png" width='50%'></img>
+</a>
+    <a href="#" class="btn">
+    <img src="/img/logos.png" width='50%'></img>
+</a>
+    <a href="https://discord.gg/dfuZnaNBb" class="btn">
+    <img src="/img/discorde.png" width='50%'></img>
+</a>
+</div>
+</body>
+        {% endblock %}
+    </body>
+</html>
