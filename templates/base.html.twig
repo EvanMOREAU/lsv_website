@@ -5,41 +5,332 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
         {% block stylesheets %}
-        <link href="/css/network.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-FjApv0+maW6LdWyA4b6nA6cpROVsCF7Iv3PkgwG6qOp6Lp4UchO0L+YTVaOExQRP" crossorigin="anonymous">
+<script src="https://kit.fontawesome.com/43b50773be.js" crossorigin="anonymous"></script>
         {% endblock %}
 
         {% block javascripts %}
-{% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
     </head>
     <body>
+        <link href="/css/nav.css" rel="stylesheet">
         {% block body %}
-        <head>
-<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
-</head>
 
-<body>
+    
+    <input type="checkbox" id="nav-toggle">
+    <div class="sidebar">
+        <div class="sidebar-brand">
+          <h1> <span class="fab fa-asymmetrik"> </span> <span>Aizcar</span>
+          </h1>
+        </div>
+        
+        <div class="sidebar-menu">
+          <ul>
+            <li>
+              <a href="#" class="active">
+                <span class="fas fa-tachometer-alt"></span>
+                <span>Dashboard</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="fas fa-users" ></span>
+                <span>Customers</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="fas fa-stream"></span>
+              <span>Projects</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="fas fa-shopping-cart"></span>
+                <span>Orders</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="fas fa-boxes"></span>
+                <span>Inventory</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="fas fa-user-circle"></span>
+                <span>Accounts</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="fas fa-tasks"></span>
+                <span>Task</span>
+              </a>
+            </li>
+          </ul>
 
-<img src="/img/LSV.png" width="15%"></img><br><br>
-  <h1>LSV Rôleplay FiveM</h1>
-  <div class ="frame">
-    <a href="https://www.youtube.com/@lsv.roleplay" target="_blank" class="btn">
-    <img src="/img/youtube.png" width='50%'></img>
-</a>
-    <a href="https://www.instagram.com/lsv_roleplay_fivem/" class="btn">
-    <img src="/img/instagram.png" width='50%'></img>
-</a>
-    <a href="https://www.tiktok.com/@lsv.roleplay.fivem" class="btn">
-    <img src="/img/tic-tac.png" width='50%'></img>
-</a>
-    <a href="#" class="btn">
-    <img src="/img/logos.png" width='50%'></img>
-</a>
-    <a href="https://discord.gg/dfuZnaNBb" class="btn">
-    <img src="/img/discorde.png" width='50%'></img>
-</a>
-</div>
-</body>
+        </div>
+    </div>    
+
+    <div class="main-content">
+      <header>
+        <h2>
+          <label for="nav-toggle">
+            <span class="fas fa-bars"></span>
+          </label>
+          Dashboard
+        </h2>
+
+        <div class="search-wrapper">
+          <span class="fas fa-search"> </span>
+          <input type="search" placeholder="Search..." />
+
+        </div>
+
+        <div class="user-wrapper">
+         <img src="https://bit.ly/3bvT89p" width="40px" height="40px" alt="profile-img">
+         <div class="">
+            <h4>{{ app.user.getFirstName()}} {{ app.user.getLastName()}}</h4>
+            <small>
+            {% if app.user.getGroup() == "admin" %}
+              Fondateur
+            {% elseif app.user.getGroup() == "mod" %}
+              Modérateur
+            {% else %}
+              Joueur
+            {% endif %}
+
+            </small>
+         </div>
+        </div>
+      </header>
+
+      <main>
+        <div class="cards">
+          <div class="card-single">
+            <div>
+              <h1>50</h1>
+              <span>Customers</span>
+            </div>
+            <div>
+              <span class="fas fa-users"></span>
+            </div>
+          </div>
+          <div class="card-single">
+            <div>
+              <h1>12</h1>
+              <span>Projects</span>
+            </div>
+            <div>
+              <span class="fas fa-clipboard-list"></span>
+            </div>
+          </div>
+          <div class="card-single">
+            <div>
+              <h1>15</h1>
+              <span>Orders</span>
+            </div>
+            <div>
+              <span class="fas fa-shopping-cart"></span>
+            </div>
+          </div>
+          <div class="card-single">
+            <div>
+              <h1>$50K</h1>
+              <span>Income</span>
+            </div>
+            <div>
+              <span class="fas fa-wallet"></span>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="recent-grid">
+          <div class="projects">
+            <div class="card">
+              <div class="card-header">
+                <h2>Recent Projects</h2>
+                <button>See all <span class="fas fa-arrow-right"></span> </button>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table width="100%">
+                  <thead>
+                    <tr>
+                      <td>Project Title</td>
+                      <td>Department</td>
+                      <td>Status</td>
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Website</td>
+                      <td>Frontend</td>
+                      <td>
+                        <span class="status purple"></span>
+                        Review
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Website</td>
+                      <td>Frontend</td>
+                      <td>
+                        <span class="status orange"></span>
+                        Pending
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Website</td>
+                      <td>Frontend</td>
+                      <td>
+                        <span class="status pink"></span>
+                        In Progress
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Website</td>
+                      <td>Frontend</td>
+                      <td>
+                        <span class="status purple"></span>
+                        Review
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Website</td>
+                      <td>Frontend</td>
+                      <td>
+                        <span class="status pink"></span>
+                        In Progress
+                      </td>
+                    </tr>
+                  </tbody>
+
+                </table>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+          <div class="customers">
+            <div class="card">
+              <div class="card-header">
+                  <h2>New Customers</h2>
+                  <button>See all <span class="fas fa-arrow-right"></span> </button>
+              </div>
+              <div class="card-body">
+                <div class="customer">
+                  <div class="info">
+                    <img src="https://bit.ly/3bvT89p" height="40px" width="40px" alt="customer">
+                    <div>
+                      <h4>Malik Abushabab</h4>
+                      <small>CEO</small>
+                    </div>
+                  </div>
+                  <div class="contact">
+                      <span class="fas fa-user-circle"></span>
+                      <span class="fas fa-comment"></span>
+                      <span class="fas fa-phone-alt"></span>
+                    </div>
+                </div>
+                <div class="customer">
+                  <div class="info">
+                    <img src="https://bit.ly/3bvT89p" height="40px" width="40px" alt="customer">
+                    <div>
+                      <h4>Malik Abushabab</h4>
+                      <small>CEO</small>
+                    </div>
+                  </div>
+                  <div class="contact">
+                      <span class="fas fa-user-circle"></span>
+                      <span class="fas fa-comment"></span>
+                      <span class="fas fa-phone-alt"></span>
+                    </div>
+                </div>
+                <div class="customer">
+                  <div class="info">
+                    <img src="https://bit.ly/3bvT89p" height="40px" width="40px" alt="customer">
+                    <div>
+                      <h4>Malik Abushabab</h4>
+                      <small>CEO</small>
+                    </div>
+                  </div>
+                  <div class="contact">
+                      <span class="fas fa-user-circle"></span>
+                      <span class="fas fa-comment"></span>
+                      <span class="fas fa-phone-alt"></span>
+                    </div>
+                </div>
+                <div class="customer">
+                  <div class="info">
+                    <img src="https://bit.ly/3bvT89p" height="40px" width="40px" alt="customer">
+                    <div>
+                      <h4>Malik Abushabab</h4>
+                      <small>CEO</small>
+                    </div>
+                  </div>
+                  <div class="contact">
+                      <span class="fas fa-user-circle"></span>
+                      <span class="fas fa-comment"></span>
+                      <span class="fas fa-phone-alt"></span>
+                    </div>
+                </div>
+                <div class="customer">
+                  <div class="info">
+                    <img src="https://bit.ly/3bvT89p" height="40px" width="40px" alt="customer">
+                    <div>
+                      <h4>Malik Abushabab</h4>
+                      <small>CEO</small>
+                    </div>
+                  </div>
+                  <div class="contact">
+                      <span class="fas fa-user-circle"></span>
+                      <span class="fas fa-comment"></span>
+                      <span class="fas fa-phone-alt"></span>
+                    </div>
+                </div>
+                <div class="customer">
+                  <div class="info">
+                    <img src="https://bit.ly/3bvT89p" height="40px" width="40px" alt="customer">
+                    <div>
+                      <h4>Malik Abushabab</h4>
+                      <small>CEO</small>
+                    </div>
+                  </div>
+                  <div class="contact">
+                      <span class="fas fa-user-circle"></span>
+                      <span class="fas fa-comment"></span>
+                      <span class="fas fa-phone-alt"></span>
+                    </div>
+                </div>
+                <div class="customer">
+                  <div class="info">
+                    <img src="https://bit.ly/3bvT89p" height="40px" width="40px" alt="customer">
+                    <div>
+                      <h4>Malik Abushabab</h4>
+                      <small>CEO</small>
+                    </div>
+                  </div>
+                  <div class="contact">
+                      <span class="fas fa-user-circle"></span>
+                      <span class="fas fa-comment"></span>
+                      <span class="fas fa-phone-alt"></span>
+                    </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          
+        </div>  
+
+      </main>
+    </div>
+
+
         {% endblock %}
     </body>
 </html>
